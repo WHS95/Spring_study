@@ -28,17 +28,20 @@ public class HelloController {
     }
 
     @GetMapping("hello-string")
+    //http://localhost:8080/hello-string?name=spring
     @ResponseBody
     public String helloString(@RequestParam("name") String name) {
         return "hello " + name;
     }
 
     @GetMapping("hello-api")
+    //http://localhost:8080/hello-api?name=spring
     @ResponseBody
     public Hello helloApi(@RequestParam("name") String name) {
         Hello hello = new Hello();
         hello.setName(name);
         return hello;
+        //return 값이 객체인 경우 spring 자체적인 조건들로 인해서 JSON 형태로 변경하여 결과값을 내보낸다.
     }
 
     static class Hello{
