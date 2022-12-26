@@ -24,12 +24,17 @@ public class MemmoryMemberRepository implements  MemberRepository{
     @Override
     public Optional<Member> findByName(String name) {
         return store.values().stream()
-                .filter(member -> member.getName().equals(name))
+                .filter(member -> member.getName().equals(name))//자바람다사용(11111)
                 .findAny();
     }
 
     @Override
     public List<Member> findAll() {
+
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore(){
+        store.clear();
     }
 }
